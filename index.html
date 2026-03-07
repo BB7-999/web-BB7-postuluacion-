@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 𝓑𝓑7 𝓒𝓸𝓶𝓾𝓷𝓲𝓽𝔂 - Postulación</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+
+/* 🔥 Imagen desde URL */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(" https://cdn.discordapp.com/attachments/1444569246280581172/1477509374997172406/logo_pagina.jpg?ex=69ad9715&is=69ac4595&hm=d905b382683e2c396df72b07b989befd0591adb2bdfdc3538781f9b3728dd069&") no-repeat center center/cover;
+    filter: blur(10px);
+    transform: scale(1.1);
+    z-index: -2;
+}
+
+/* Capa oscura encima */
+body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
+
+.container {
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 0 25px rgb(212, 28, 28);
+}
+
+h1 {
+    text-align: center;
+    color: rgb(228, 62, 62);
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgb(228, 68, 68);
+}
+
+.subtitle {
+    text-align: center;
+    color: #f53535;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    background: #1c1c1c;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: rgb(179, 33, 33);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: rgb(223, 43, 43);
+    box-shadow: 0 0 15px rgb(248, 0, 0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>𝓑𝓑7 𝓒𝓸𝓶𝓾𝓷𝓲𝓽𝔂</h1>
+    <div class="subtitle">Postulación de ingreso a 𝓑𝓑7 𝓒𝓸𝓶𝓾𝓷𝓲𝓽𝔂</div>
+
+    <form id="form">
+        <input type="text" placeholder="Nombre / Alias" required>
+        <input type="number" placeholder="Edad" required>
+        <input type="text" placeholder="Discord (usuario#0000)" required>
+        <textarea placeholder="Experiencia en comunidades"></textarea>
+        <textarea placeholder="¿Por qué quieres unirte?" required></textarea>
+
+        <button type="submit">Enviar Postulación</button>
+    </form>
+</div>
+<script>
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const inputs = document.querySelectorAll("input, textarea");
+
+    const data = {
+        content: "**Nueva Postulacion 𝓑𝓑7**\n\n" +
+        "Nombre: " + inputs[0].value + "\n" +
+        "Edad: " + inputs[1].value + "\n" +
+        "Discord: " + inputs[2].value + "\n" +
+        "Experiencia: " + inputs[3].value + "\n" +
+        "Motivo: " + inputs[4].value
+    };
+
+    fetch("https://discord.com/api/webhooks/1476678944664195072/OxNhIwt9dY9836fX948-9efKZmjfOegMrIgkhsFiv6fsiyGMY7pFISOUcAC3IcMwph05", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    alert("Postulación enviada correctamente");
+});
+</script>
+</body>
+</html>
